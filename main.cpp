@@ -20,7 +20,7 @@
 #include <opencv2/videoio.hpp>
 #include <opencv2/highgui/highgui.hpp>
 #include <opencv2/imgproc/imgproc.hpp>
-#include <cv.hpp>
+#include <opencv2/opencv.hpp>
 
 #include <time.h>
 
@@ -71,17 +71,17 @@ int main(int argc, char* argv[]) {
     Tensor tensor;
     std::vector<Tensor> outputs;
     double thresholdScore = 0.5;
-    double thresholdIOU = 0.8;
+    double thresholdIOU = 0.5; // 0.8;
 
     // FPS count
-    int nFrames = 25;
+    int nFrames = 1;
     int iFrame = 0;
     double fps = 0.;
     time_t start, end;
     time(&start);
 
     // Start streaming frames from camera
-    VideoCapture cap(1);
+    VideoCapture cap(0);
 
     tensorflow::TensorShape shape = tensorflow::TensorShape();
     shape.AddDim(1);
